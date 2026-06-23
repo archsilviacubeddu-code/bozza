@@ -1,8 +1,9 @@
-import streamlit as st
+mport streamlit as st
 from supabase import create_client
 
 @st.cache_resource
-def get_supabase_client():
-    url = st.secrets["SUPABASE_URL"]
-    key = st.secrets["SUPABASE_KEY"]
-    return create_client(url, key)
+def get_db():
+    # Assicurati che i nomi segreti siano identici a quelli su Streamlit Cloud
+    return create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"])
+
+db = get_db()
